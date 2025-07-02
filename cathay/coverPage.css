@@ -1,0 +1,202 @@
+@font-face {
+  font-family: 'cathaylife-font';
+  src: url('fonts/cathaylife-font.eot?2015101401&1447312908');
+  src: url('fonts/cathaylife-font.eot?&1447312908#iefix2015101401') format("embedded-opentype"), 
+  	   url('fonts/cathaylife-font.woff?2015101401&1447312908') format("woff"), 
+  	   url('fonts/cathaylife-font.ttf?2015101401&1447312908') format("truetype"), 
+  	   url('fonts/cathaylife-font.svg?2015101401&1447312908#skmFount') format("svg");	  
+  font-weight: normal;
+  font-style: normal;
+}
+	
+.m-icon {
+  font: normal normal normal 13px/1 cathaylife-font;
+  font-size: inherit;
+  text-rendering: auto;
+  text-transform: none;
+  speak: none;
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.m-icon-cathaylife:before {
+  content: "\e901";
+}
+.b-loading.is-mask:before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  position: absolute;
+  z-index: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+}
+.b-loading:after {
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #FFF;
+  border-bottom-color: #0A4;
+  position: absolute;
+  z-index: 2;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  -moz-animation: rotate 1s linear 0s infinite;
+  -webkit-animation: rotate 1s linear 0s infinite;
+  animation: rotate 1s linear 0s infinite;
+}
+
+/* cloak*/
+.b-cloak {
+  visibility: hidden !important;
+  z-index: 0 !important;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+
+/*.b-loading.is-fixed {
+  position: fixed;
+}*/
+
+@-moz-keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+/* loading */
+.b-loading {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  position: absolute;
+  z-index: 99;
+  overflow: hidden;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -ms-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+}
+.b-loading.is-relative {
+  position: relative;
+  min-height: 70px;
+}
+.b-loading.is-fixed {
+  position: fixed;
+}
+.b-loading.is-hide {
+  display: none;
+}
+.b-loading.is-mask:before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  position: absolute;
+  z-index: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+}
+.b-loading:after {
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #FFF;
+  border-bottom-color: #0A4;
+  position: absolute;
+  z-index: 2;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  -moz-animation: rotate 1s linear 0s infinite;
+  -webkit-animation: rotate 1s linear 0s infinite;
+  animation: rotate 1s linear 0s infinite;
+}
+.b-loading .m-icon {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  color: #0A4;
+  width: 36px;
+  height: 36px;
+  font-size: 36px;
+  position: absolute;
+  z-index: 3;
+}
