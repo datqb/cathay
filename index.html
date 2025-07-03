@@ -2264,10 +2264,12 @@
       document
         .getElementById("inputAmount")
         .addEventListener("input", function (e) {
-          amount = e.target.value;
-          const formatted = Number(amount).toLocaleString();
+
+          const rawNumber = e.target.value.replace(/[^\d]/g, "");
+          const formatted = Number(rawNumber).toLocaleString("en-US");
+
           document.getElementById("amount").textContent = formatted || "—";
-          updateTransactionDetailAmount(formatNumberWithCommaSpace(amount));
+          updateTransactionDetailAmount(formatNumberWithCommaSpace(rawNumber));
         });
 
       document.getElementById("monthInput").addEventListener("input", (e) => {
