@@ -18,22 +18,10 @@
       src="./cathay/ruxitagentjs_ICA7NVfqrux_10311250313143955.js"
       data-dtconfig="app=ea7c4b59f27d43eb|cuc=s05g7k3y|mel=100000|expw=1|featureHash=ICA7NVfqrux|dpvc=1|lastModification=1745963920605|postfix=s05g7k3y|tp=500,50,0|rdnt=1|uxrgce=1|agentUri=/CPWeb/ruxitagentjs_ICA7NVfqrux_10311250313143955.js|reportUrl=/CPWeb/rb_de0799f3-d5d6-431f-896d-dc179de13679|rid=RID_2096324795|rpid=-1725887476|domain=cathaylife.com.vn"
     ></script>
-    <link
-      rel="stylesheet"
-      href="./cathay/bootstrap.css"
-    />
-    <link
-      href="./cathay/custom.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="./cathay/all.css"
-    />
-    <link
-      rel="stylesheet"
-      href="./cathay/coverPage.css"
-    />
+    <link rel="stylesheet" href="./cathay/bootstrap.css" />
+    <link href="./cathay/custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./cathay/all.css" />
+    <link rel="stylesheet" href="./cathay/coverPage.css" />
     <link
       rel="Shortcut Icon"
       type="image/x-icon"
@@ -1834,9 +1822,7 @@
               <!-- header -->
               <div class="row justify-content-center mb-1">
                 <div class="col-auto">
-                  <img
-                    src="./cathay/cathayGreenTree.png"
-                  />
+                  <img src="./cathay/cathayGreenTree.png" />
                 </div>
               </div>
               <div class="row justify-content-center mb-3">
@@ -1917,8 +1903,6 @@
                   <!-- Số hợp đồng -->
                 </div>
               </div>
-
-              
 
               <div class="row justify-content-center">
                 <div
@@ -2027,16 +2011,32 @@
                   />
                 </div>
               </div>
-              <div class="row justify-content-center mb-3 mt-4">
-                <!-- Giao diện nhập số hợp đồng -->
+              <!-- <div class="row justify-content-center mb-3 mt-4">
                 <div class="col-md-8 col-sm-10 col-12">
-                  <label for="inputTransactionDetail" class="font-weight-bold"></label>
+                  <label
+                    for="inputTransactionDetail"
+                    class="font-weight-bold"
+                  ></label>
                   <input
                     type="text"
                     id="inputTransactionDetail"
                     class="form-control"
                     value="【250700154669】 - Renewal Premium 07/2025 - 2, 577,000"
                     placeholder="Chi tiết"
+                  />
+                </div>
+              </div> -->
+              <div class="row justify-content-center mb-3 mt-4">
+                <!-- Giao diện nhập số hợp đồng -->
+                <div class="col-md-8 col-sm-10 col-12">
+                  <label for="monthInput" class="font-weight-bold"></label>
+                  <input
+                    type="number"
+                    id="monthInput"
+                    min="1"
+                    max="12"
+                    class="form-control mb-3"
+                    placeholder="Tháng"
                   />
                 </div>
               </div>
@@ -2177,18 +2177,9 @@
       </div>
     </div>
 
-    <script
-      type="text/javascript"
-      src="./cathay/jquery-3.3.1.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./cathay/bootstrap.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./cathay/jquery.validate.js"
-    ></script>
+    <script type="text/javascript" src="./cathay/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./cathay/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./cathay/jquery.validate.js"></script>
     <script
       type="text/javascript"
       src="./cathay/invokeActionsSacombank.js"
@@ -2211,16 +2202,77 @@
       }
     </script>
     <script>
-      document.getElementById("inputPolNum").addEventListener("input", function (e) {
-        document.getElementById("polNum").textContent = e.target.value || "—";
-      });
+      document
+        .getElementById("inputPolNum")
+        .addEventListener("input", function (e) {
+          document.getElementById("polNum").textContent = e.target.value || "—";
+        });
 
-      document.getElementById("inputAmount").addEventListener("input", function (e) {
-        document.getElementById("amount").textContent = e.target.value || "—";
-      });
+      document
+        .getElementById("inputAmount")
+        .addEventListener("input", function (e) {
+          document.getElementById("amount").textContent = e.target.value || "—";
+        });
 
-      document.getElementById("inputTransactionDetail").addEventListener("input", function (e) {
-        document.getElementById("transaction_detail").textContent = e.target.value || "—";
+      // document
+      //   .getElementById("inputTransactionDetail")
+      //   .addEventListener("input", function (e) {
+      //     document.getElementById("transaction_detail").textContent =
+      //       e.target.value || "—";
+      //   });
+    </script>
+    <script>
+      const generateRandomSuffix = () => {
+        return Math.floor(10000000 + Math.random() * 90000000).toString(); // từ 10000000 đến 99999999
+      };
+
+      function formatNumberWithCommaSpace(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ");
+      }
+
+      const randomSuffix = generateRandomSuffix();
+
+      const updateTransactionDetailAmount = (amount) => {
+        if (!amount) return;
+        const content =
+          document.getElementById("transaction_detail").textContent;
+        const match = content.match(/Renewal Premium (\d{2})\/\d{4}/);
+
+        if (match) {
+          const month = match[1]; // "06"
+          const newCode = `25${month}${randomSuffix}`;
+          const newText = `【${newCode}】 - Renewal Premium ${month}/2025 - ${amount}`;
+          document.getElementById("transaction_detail").textContent = newText;
+        } else {
+          console.log("Không tìm thấy tháng.");
+        }
+      };
+
+      const updateTransactionDetailMonth = (monthNumber) => {
+        if (isNaN(monthNumber) || monthNumber < 1 || monthNumber > 12) return;
+        const content =
+          document.getElementById("transaction_detail").textContent;
+        const parts = content.split(" - ");
+        const amount = parts[parts.length - 1];
+
+        const monthStr = monthNumber.toString().padStart(2, "0"); // chuyển 7 → "07"
+        const newCode = `25${monthStr}${randomSuffix}`;
+        const newText = `【${newCode}】 - Renewal Premium ${monthStr}/2025 - ${amount}`;
+        document.getElementById("transaction_detail").textContent = newText;
+      };
+
+      document
+        .getElementById("inputAmount")
+        .addEventListener("input", function (e) {
+          amount = e.target.value;
+          const formatted = Number(amount).toLocaleString();
+          document.getElementById("amount").textContent = formatted || "—";
+          updateTransactionDetailAmount(formatNumberWithCommaSpace(amount));
+        });
+
+      document.getElementById("monthInput").addEventListener("input", (e) => {
+        const month = parseInt(e.target.value, 10);
+        updateTransactionDetailMonth(month);
       });
     </script>
   </body>
