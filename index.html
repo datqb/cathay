@@ -1915,7 +1915,7 @@
                   ><span
                     class="text-center ml-auto text-uppercase"
                     id="transaction_detail"
-                    >【250700154669】 - Renewal Premium 07/2025 - 2, 577,
+                    >【260700154669】 - Renewal Premium 07/2026 - 2, 577,
                     000</span
                   >
                   <!-- Chi tiết -->
@@ -2021,7 +2021,7 @@
                     type="text"
                     id="inputTransactionDetail"
                     class="form-control"
-                    value="【250700154669】 - Renewal Premium 07/2025 - 2, 577,000"
+                    value="【260700154669】 - Renewal Premium 07/2026 - 2, 577,000"
                     placeholder="Chi tiết"
                   />
                 </div>
@@ -2240,8 +2240,8 @@
 
         if (match) {
           const month = match[1]; // "06"
-          const newCode = `25${month}${randomSuffix}`;
-          const newText = `【${newCode}】 - Renewal Premium ${month}/2025 - ${amount}`;
+          const newCode = `26${month}${randomSuffix}`;
+          const newText = `【${newCode}】 - Renewal Premium ${month}/2026 - ${amount}`;
           document.getElementById("transaction_detail").textContent = newText;
         } else {
           console.log("Không tìm thấy tháng.");
@@ -2256,8 +2256,8 @@
         const amount = parts[parts.length - 1];
 
         const monthStr = monthNumber.toString().padStart(2, "0"); // chuyển 7 → "07"
-        const newCode = `25${monthStr}${randomSuffix}`;
-        const newText = `【${newCode}】 - Renewal Premium ${monthStr}/2025 - ${amount}`;
+        const newCode = `26${monthStr}${randomSuffix}`;
+        const newText = `【${newCode}】 - Renewal Premium ${monthStr}/2026 - ${amount}`;
         document.getElementById("transaction_detail").textContent = newText;
       };
 
