@@ -2041,6 +2041,20 @@
                 </div>
               </div>
 
+              <div class="row justify-content-center mb-3 mt-4">
+                <!-- Giao diện nhập số hợp đồng -->
+                <div class="col-md-8 col-sm-10 col-12">
+                  <label for="yearInput" class="font-weight-bold"></label>
+                  <input
+                    type="number"
+                    id="yearInput"
+                    maxlength="2"
+                    class="form-control mb-3"
+                    placeholder="Năm (Ví dụ: 25)"
+                  />
+                </div>
+              </div>
+
               <!-- end content -->
             </div>
           </div>
@@ -2213,13 +2227,6 @@
         .addEventListener("input", function (e) {
           document.getElementById("amount").textContent = e.target.value || "—";
         });
-
-      // document
-      //   .getElementById("inputTransactionDetail")
-      //   .addEventListener("input", function (e) {
-      //     document.getElementById("transaction_detail").textContent =
-      //       e.target.value || "—";
-      //   });
     </script>
     <script>
       const generateRandomSuffix = () => {
@@ -2261,6 +2268,37 @@
         document.getElementById("transaction_detail").textContent = newText;
       };
 
+      const updateTransactionDetailYear = (yearNumber) => {
+        if (isNaN(yearNumber)) return;
+        const content =
+          document.getElementById("transaction_detail").textContent;
+
+        console.log("content", content);
+
+        // Extract transaction code from 【】
+        const codeMatch = content.match(/【(\d+)】/);
+        if (!codeMatch) return;
+        
+        const currentCode = codeMatch[1];
+        // Replace first 2 digits with new year (padded to 2 digits)
+        const yearStr = yearNumber.toString().padStart(2, "0");
+        const newCode = yearStr + currentCode.substring(2);
+        
+        // Extract month and amount
+        const dateMatch = content.match(/Renewal Premium (\d{2})\/(\d{4})/);
+        if (!dateMatch) return;
+        
+        const month = dateMatch[1];
+        const fullYear = `20${yearStr}`;
+        const parts = content.split(" - ");
+        const amount = parts[parts.length - 1];
+        
+        // Reconstruct the transaction detail
+        const newText = `【${newCode}】 - Renewal Premium ${month}/${fullYear} - ${amount}`;
+        
+        document.getElementById("transaction_detail").textContent = newText;
+      };
+
       document
         .getElementById("inputAmount")
         .addEventListener("input", function (e) {
@@ -2275,6 +2313,18 @@
       document.getElementById("monthInput").addEventListener("input", (e) => {
         const month = parseInt(e.target.value, 10);
         updateTransactionDetailMonth(month);
+      });
+
+      document.getElementById("yearInput").addEventListener("input", (e) => {
+        // Giới hạn tối đa 2 ký tự
+        if (e.target.value.length > 2) {
+          e.target.value = e.target.value.slice(0, 2);
+        }
+        
+        const year = parseInt(e.target.value, 10);
+
+        console.log("yearInput", year);
+        updateTransactionDetailYear(year);
       });
     </script>
   </body>
